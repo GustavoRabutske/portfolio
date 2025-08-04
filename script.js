@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // LÓGICA PARA ANIMAÇÃO DE SCROLL (Fade-in)
     const sections = document.querySelectorAll('.content-section');
     if (sections.length > 0) {
         const observerOptions = {
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // LÓGICA DO SELETOR DE TEMA
     const themeSwitcher = document.getElementById('theme-switcher');
     const body = document.body;
     const iconMoon = document.querySelector('.icon-moon');
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NOVA LÓGICA: MODAL DE IMAGEM ---
     const modal = document.getElementById('image-modal');
     if (modal) {
         const modalImg = document.getElementById("modal-image-content");
@@ -54,14 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fecha o modal ao clicar no 'X'
         if(closeModal) {
             closeModal.onclick = function() {
                 modal.style.display = "none";
             }
         }
-        
-        // Fecha o modal ao clicar fora da imagem
+ 
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -69,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- NOVA LÓGICA: COPIAR E-MAIL ---
     const copyButton = document.getElementById('copy-email-button');
     if (copyButton) {
         const emailAddress = document.getElementById('email-address').innerText;
@@ -77,14 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         copyButton.addEventListener('click', () => {
             navigator.clipboard.writeText(emailAddress).then(() => {
-                // Feedback visual para o usuário
                 copyTextSpan.textContent = 'Copiado!';
-                copyButton.style.backgroundColor = '#22c55e'; // Verde sucesso
+                copyButton.style.backgroundColor = '#22c55e'; 
 
-                // Retorna ao estado original após 2 segundos
+             
                 setTimeout(() => {
                     copyTextSpan.textContent = 'Copiar';
-                     // Retorna a cor para a variável CSS do tema
                     const primaryColor = getComputedStyle(document.body).getPropertyValue('--primary-color');
                     copyButton.style.backgroundColor = primaryColor.trim();
                 }, 2000);
@@ -96,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // LÓGICA DO EFEITO DE CHUVA/NEVE SUTIL
     const canvas = document.getElementById('rain-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
